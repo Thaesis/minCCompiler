@@ -1,0 +1,96 @@
+1.  Brandon Tharp (CS4331)
+    Zubin Hathiram (CS4331)
+
+
+2. How often do you plan to work on the project? What technology will you use for the
+virtual meetings?
+
+    We plan to work on the project as often as possible, slowly increasing the days
+    as we get closer to the due date. Furthermore, we have been using Discord for
+    communication.
+
+3. Explain which parts of the assignment have been implemented by which team member.
+The instructor reserves the right to weight grade based on the fraction of the work per-
+formed.
+
+    Brandon - Dynamic Buffers for flexible printing, general emitExpr(), function header and footer generation
+    Zubin - Specialized emit funciton calls, process() loop structure, Instruction struct packaging and interactions.
+
+    Both partners contributed equally on this assignment.
+
+4. Provide two examples of how you will test the correctness of your code. These examples
+should be different from the ones provided in this document. Make sure to include the
+actual test case’s code in the write up, not just a description how you tested your program.
+As a software engineering professional, you will need to write your own test cases, so it is
+important to get that experience earlier in your educational environment.
+
+    int main() {
+    // Variable declaration
+    int x;
+    int sum;
+
+    // Variable initialization
+    x = 1;
+    sum = 0;
+
+    // While loop to calculate the sum of numbers from 1 to 5
+    while (x <= 5) {
+        sum = sum + x;  // Add the current value of x to sum
+        x = x + 1;      // Increment x
+    }
+
+    // Print the result
+    output(sum);
+
+    return 0;
+    }   
+
+    int square(int n) {
+    return n * n;
+}
+
+int main() {
+    // Variable declaration
+    int num;
+    int result;
+
+    // Initialize the number
+    num = 4;
+
+    // Call the square function
+    result = square(num);
+
+    // Print the result
+    output(result);
+
+    return 0;
+}
+    
+Ideally, we wanted to test complex(ish) loops inside of our functions. Furthermore, calling functions as a result to an expression.
+
+
+5. Provide details about known bugs in your program and how you debugged your code.
+Also, provide the name of the tool you used for debugging your code.
+
+Unfortunately, the program does not function as intended. Therefore, it does not compile due to definition errors and the like.
+Normally, we always use gdb to look at stacktraces and hunt down segfaults.
+
+6. Describe the calling convention of functions in detail.
+
+    1. The caller will pass $a0-$a3 as arguments to the function, any overflow is placed on the stack.
+    2. The registers from the caller will be saved to $t0-t9 if needed after the function call.
+    3. The callee with allocate space on the stack for local variables, sending the $sp down the stack to accomodate.
+    4. the callee will save registers $s0-$s7, the $fp, and the $ra.
+    5. Function will execute.
+    6. The function will return a value in $v0.
+    7. Restore caller saved registers.
+    8. Callee resets the $sp to deallocate local variables.
+    9. Callee jr $ra ot return to the original caller.
+
+7. Provide detailed instructions for the full process of compiling mcc, running mcc to generate
+assembly code from a ”.mC” file, and running the generated assembly code on SPIM.
+
+    1. In the main directory, run the command ./obj/mcc ./tests/cases/ <chosen test case>.mc > output.s.
+        This will copy all outputs to the file output.s
+    
+    2. Run the command spim -file output.s
