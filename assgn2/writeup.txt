@@ -1,9 +1,0 @@
-1. Brandon Tharp, Zubin Hathiram, CS4318
-
-2. We plan to meet as time allows, but we are going to a point to meet at least every other day as the due date drawers nearer.
-
-3. We plan to implement the parser following the rules of LR(1) grammer along with the use of semantics to develop the tree and symbol table.
-   The Symbol Table will be implemented using a Hash Table to store and retrieve ids.
-   An AST will be used to structure the parser's tree as well.
-
-    Furthermore, all parties contributed equally for this assignment. 
